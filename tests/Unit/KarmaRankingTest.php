@@ -29,7 +29,7 @@ class KarmaRankingTest extends TestCase
 
         $response = $this->post('/api/KarmaPosition' , [
             'user_id' => $max_id + 1,
-            'count' => rand(1, 100000)
+            'count' => rand(1, 10)
         ]);
 
         $response->assertStatus(200);
@@ -39,7 +39,7 @@ class KarmaRankingTest extends TestCase
     {
         $response = $this->post('/api/KarmaPosition' , [
             'user_id' => -1,
-            'count' => rand(1, 100000)
+            'count' => rand(1, 10)
         ]);
 
         $response->assertStatus(200);
@@ -69,7 +69,7 @@ class KarmaRankingTest extends TestCase
     {
         $response = $this->post('/api/KarmaPosition' , [
             'user_id' => '',
-            'count' => rand(1, 100000)
+            'count' => rand(1, 10)
         ]);
 
         $response->assertStatus(200);
@@ -83,6 +83,32 @@ class KarmaRankingTest extends TestCase
         ]);
 
         $response->assertStatus(200);
+    }
+
+    public function test_lower_position()
+    {
+        
+        $user = User::where('karma_score', '=', User::max('karma_score'))->first();
+
+        $response = $this->post('/api/KarmaPosition' , [
+            'user_id' => $user->id,
+            'count' => rand(1, 10)
+        ]);
+
+        $response->assertStatus(200);
+        
+    }
+
+
+    public function test_large_count()
+    {
+        $response = $this->post('/api/KarmaPosition' , [
+            'user_id' => rand(1, 100000),
+            'count' => 50000
+        ]);
+
+        $response->assertStatus(200);
+        
     }
     
     public function test_database_Missing()
@@ -100,4 +126,5 @@ class KarmaRankingTest extends TestCase
             'username' => $user->username
         ]);
     }
+
 }

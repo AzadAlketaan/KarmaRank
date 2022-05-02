@@ -19,7 +19,9 @@ The steps to run the project:
 7. try the follwing API http://127.0.0.1:8000/api/KarmaPosition?user_id=30&count=5  to get the overall user position,
     you can edit the values of user_id , count.
 8. Run command: php artisan test, to test the API,
-    you can find the Test case in the following path: tests\Unit\KarmaRankingTest.php
+    you can find the Test case in the following path: tests\Unit\KarmaRankingTest.php.
+
+Note: there are some cases wheen the scores are equiles the order of showing user might be diffrent, but the order of position will not change it will be in the correct order.
 
 
 Please if there any thing missed or unclear call me on +963994274555.
