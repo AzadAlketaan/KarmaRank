@@ -13,12 +13,11 @@ class KarmaRankingDashboardController extends Controller
     
     public function index()
     {
-
         $user_id = rand(1, 100000);
         $count = 5;
         $check_if_exists = User::find($user_id);
 
-        if ($check_if_exists) {
+        if (isset($check_if_exists)) {
 
             if ($count < 0 ) $count = $count * -1;
             $count = ( ($count - ($count%2) ) / 2 ) ;
@@ -50,9 +49,9 @@ class KarmaRankingDashboardController extends Controller
 
              return view('index')->with('users', $users);
 
-        }else {
-            return 'The UserID is Not Exists!!';
-        }
+        }else $users = Null;
+
+        return view('index')->with('users', $users);
     }
 
     public function GenerateFakeData()

@@ -21,9 +21,16 @@ The steps to run the project:
 8. Run command: php artisan test, to test the API,
     you can find the Test case in the following path: tests\Unit\KarmaRankingTest.php.
 
-Note: there are some cases when the scores are equal the order of showing user might be different, but the order of position will not change it will be in the correct order.
+Notes about Karma_position API:
+1. All items are arranged in descending order to know the position of each user for the rest of the users.
+2. There are some cases when the scores are equal the order of showing user might be different, but the order of position will not change it 
+    will be in the correct order.
+3. I have made an index on column karma_score to make the query faster.
+4. There is another way, which is less complicated, and the method is:
+   We create a table that contains the score and the position. Whenever we enter a new user or any update on the user’s score, we change the order of this table, so when we want to implement the API, we read from this table that contains the arranged values, so there is no need for a query that Arrange the items at each API request.
+   Note: I did not use this method to adhere to the required database structure, but I have uploaded another version of the project using this method.
+5. You can find the another way on the branch karma_v2 on this link: https://github.com/AzadAlketaan/karma.
 
-Note: I have made an index on column karma_score to make the query faster.
 
 
 Please if there any thing missed or unclear call me on +963994274555.

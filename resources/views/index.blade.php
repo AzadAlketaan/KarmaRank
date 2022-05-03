@@ -31,6 +31,7 @@
     </tr>
   </thead>
   <tbody>
+@if(isset($users))
   @foreach($users as $key => $user)
     <tr>
       <th>{{ $key }}</th>
@@ -42,6 +43,7 @@
       <td>{{ $user->karma_score }}</td>
     </tr>   
     @endforeach
+  @endif
   </tbody>
 </table>
 
