@@ -22,7 +22,7 @@ The steps to run the project:
     you can find the Test case in the following path: tests\Unit\KarmaRankingTest.php.
 
 Notes about Karma_position API:
-1. All items are arranged in descending order to know the position of each user for the rest of the users.
+1. All items are arranged in descending order to know the position of each user for the rest of the users.(if the needed position only for shown users we can use rank in sql statment but it will get the order for only shown users)
 2. There are some cases when the scores are equal the order of showing user might be different, but the order of position will not change it 
     will be in the correct order.
 3. I have made an index on column karma_score to make the query faster.
