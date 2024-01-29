@@ -16,4 +16,4 @@ KarmaRank is a fun and engaging way to connect and compete with other users.
 ## Notes about Karma_position API
 - All items are arranged in descending order to know the position of each user for the rest of the users. (If the needed position is only for shown users, we can use rank in the SQL statement, but it will get the order for only shown users.)
 - There are some cases when the scores are equal, the order of showing users might be different, but the order of position will not change. It will be in the correct order.
-  - Index is made on column karma_score to make the query faster.
+- Index is made on column karma_score to make the query faster.
